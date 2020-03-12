@@ -45,8 +45,10 @@ let digits input =
     count input 1
    
 
-let minmax _ =
-    failwith "Not implemented"
+let minmax input =
+    let a,b,c,d = input
+    min (min a b) (min c d), max (max a b) (max c d)
+    
 
 let isLeap year = match (year >= 1582)  with
                   |true -> match  (not(year % 100 = 0)|| year % 400 = 0) && (year % 4 = 0) with
@@ -54,11 +56,30 @@ let isLeap year = match (year >= 1582)  with
                            |false -> false
                   |false -> failwith "not leap year"
 
-let month _ =
-    failwith "Not implemented"
+let month = function 
+        |1 ->("January", 31 ) 
+        |2 ->("February", 28)
+        |3 ->("March", 31 ) 
+        |4 ->("April", 30)
+        |5 ->("May",31)
+        |6 ->("June", 30)
+        |7 ->("July", 31)
+        |8 ->("August", 31)
+        |9 ->("September", 30)
+        |10 ->("October",31)
+        |11 ->("November", 30)
+        |12 ->("December", 31)
+        |_ -> failwith "not a month"
+    
 
-let toBinary _ =
-    failwith "Not implemented"
+
+let toBinary a =
+    failwith "fail"
+    //let rec binary num store =
+        //match a = 0 with 
+        //|true -> 0
+        //|false ->  
+    
 
 let bizFuzz _ =
     failwith "Not implemented"
