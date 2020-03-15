@@ -45,8 +45,7 @@ let digits input =
     count input 1
    
 
-let minmax input =
-    let a,b,c,d = input
+let minmax (a,b,c,d) =
     min (min a b) (min c d), max (max a b) (max c d)
     
 
@@ -73,19 +72,41 @@ let month = function
     
 
 
-let toBinary a =
-    failwith "fail"
-    //let rec binary num store =
-        //match a = 0 with 
-        //|true -> 0
-        //|false ->  
+let toBinary input =
+    match input >= 0 with
+    |true ->
+        let rec binary num store =
+            match num = 0 with 
+            |true -> match store = "" with 
+                     |true -> "0"
+                     |_ -> store
+            |false -> binary (num / 2) (string(num % 2) + store)
+        binary input ""
+    |false -> failwith "no negative numbers allowed"
     
 
-let bizFuzz _ =
-    failwith "Not implemented"
+let bizFuzz input =
+    
+    let rec biz num (a, b, c) =
+        match num < 1 with
+        |true -> (a, b, c)
+        |false -> 
+            match num % 3 = 0 && num % 5 = 0  with 
+            |true -> biz (num - 1) (a + 1, b + 1, c + 1)
+            |false -> 
+                    match num % 3 = 0 with
+                    |true -> biz (num - 1) (a + 1, b, c)
+                    |false -> match num % 5 = 0 with
+                                |true -> biz (num - 1) (a, b + 1, c)
+                                |false -> biz (num - 1) (a, b, c)
+         
+    biz input (0, 0, 0)
+        
 
-let monthDay _ _ =
+
+let monthDay d y =
     failwith "Not implemented"
+    
 
 let coord _ =
     failwith "Not implemented"
