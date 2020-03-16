@@ -105,8 +105,62 @@ let bizFuzz input =
 
 
 let monthDay d y =
-    failwith "Not implemented"
+    
+    match d > 0 && (d < 367 ) with
+    |true ->         match isLeap y with 
+                     |true -> match d <= 31 with 
+                              |true -> "January"
+                              |false -> match d <= 60 with 
+                                        |true -> "February"
+                                        |false -> match d <= 91 with 
+                                                  |true -> "March"
+                                                  |false -> match d <= 121 with 
+                                                            |true -> "April"
+                                                            |false -> match d <= 152 with 
+                                                                      |true -> "May"
+                                                                      |false -> match d <= 182 with 
+                                                                                |true -> "June"
+                                                                                |false -> match d <= 213 with 
+                                                                                          |true -> "July"
+                                                                                          |false -> match d <= 244 with
+                                                                                                    |true -> "August"
+                                                                                                    |false -> match d <= 274 with 
+                                                                                                              |true -> "September"
+                                                                                                              |false -> match d <= 305 with 
+                                                                                                                        |true -> "October"
+                                                                                                                        |false -> match d <= 335 with 
+                                                                                                                                  |true -> "November"
+                                                                                                                                  |false -> match d <= 366 with 
+                                                                                                                                            |true -> "December"
+                                                                                                                                            |false -> failwith "not a month"
+                     |false ->  
+                            match d <= 31 with 
+                            |true -> "January"
+                            |false -> match d <= 59 with 
+                                      |true -> "February"
+                                      |false -> match d <= 90 with 
+                                                |true -> "March"
+                                                |false -> match d <= 120 with 
+                                                          |true -> "April"
+                                                          |false -> match d <= 151 with 
+                                                                    |true -> "May"
+                                                                    |false -> match d <= 181 with 
+                                                                              |true -> "June"
+                                                                              |false -> match d <= 212 with 
+                                                                                        |true -> "July"
+                                                                                        |false -> match d <= 243 with
+                                                                                                  |true -> "August"
+                                                                                                  |false -> match d <= 273 with 
+                                                                                                            |true -> "September"
+                                                                                                            |false -> match d <= 304 with 
+                                                                                                                      |true -> "October"
+                                                                                                                      |false -> match d <= 334 with 
+                                                                                                                                |true -> "November"
+                                                                                                                                |false -> match d <= 365 with 
+                                                                                                                                          |true -> "December"
+                                                                                                                                          |false -> failwith "not a month"       
+    |false -> failwith "not implemented"
     
 
-let coord _ =
+let coord (a, b) (c, d) = 
     failwith "Not implemented"
